@@ -24,9 +24,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ()
+        if (!gameEnd)
         {
+            timeRemaining -= Time.deltaTime;
+            if (timeRemaining <= 0)
+            {
+                timeRemaining = 0;
+                PlayerLose(false);
 
+            }
+            UpdateTimer();
         }
     }
 

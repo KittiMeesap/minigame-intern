@@ -599,6 +599,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1904692092}
   timeLimit: 120
+  winPanel: {fileID: 49463578}
+  losePanel: {fileID: 919184601}
 --- !u!1001 &231240216
 PrefabInstance:
   m_ObjectHideFlags: 0
