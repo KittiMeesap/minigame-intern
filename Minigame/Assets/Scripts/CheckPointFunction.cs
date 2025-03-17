@@ -8,6 +8,8 @@ public class CheckPointFunction : MonoBehaviour
     private float checkedTime;
     public Renderer cpRenderer;
 
+    public GameManager gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +35,8 @@ public class CheckPointFunction : MonoBehaviour
             isChecked = true;
 
             cpRenderer.material.color = Color.yellow;
+
+            gameManager.ResetTime(checkedTime);
         }
     }
 
@@ -41,7 +45,6 @@ public class CheckPointFunction : MonoBehaviour
         if (isChecked)
         {
             player.transform.position = checkedPosition;
-
         }
     }
 }

@@ -8,6 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public TMP_Text timerText;
+    public float currentTime;
     public float timeLimit = 120f;
     private float timeRemaining;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentTime = 0f;
         timeRemaining = timeLimit;
         winPanel.SetActive(false);
         losePanel.SetActive(false);
@@ -46,6 +48,12 @@ public class GameManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
     }
 
+    public void ResetTime(float checkPointTime)
+    {
+        timeRemaining = checkPointTime;
+        currentTime = checkPointTime;
+    }
+
     public void PlayerWin()
     {
         if (!gameEnd)
@@ -67,6 +75,11 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
 }
