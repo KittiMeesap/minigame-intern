@@ -36,4 +36,23 @@ public class GameManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
         timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
     }
+
+    public void PlayerWon()
+    {
+        if (!gameEnd)
+        {
+            gameEnd = true;
+            winPanel.SetActive(true);
+        }
+    }
+
+    public void PlayerLose(bool win)
+    {
+        if (!gameEnd)
+        {
+            gameEnd = true;
+            losePanel.SetActive(true);
+        }
+    }
+
 }
