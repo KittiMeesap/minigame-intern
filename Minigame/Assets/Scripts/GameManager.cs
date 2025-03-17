@@ -8,16 +8,26 @@ public class GameManager : MonoBehaviour
     public TMP_Text timerText;
     public float timeLimit = 120f;
     private float timeRemaining;
+
+    public GameObject winPanel;
+    public GameObject losePanel;
+
+    private bool gameEnd = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         timeRemaining = timeLimit;
+        winPanel.SetActive(false);
+        losePanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateTimer();
+        if ()
+        {
+
+        }
     }
 
     private void UpdateTimer()
