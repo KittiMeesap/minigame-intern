@@ -19,7 +19,7 @@ public class CheckPointFunction : MonoBehaviour
     {
         if (isChecked)
         {
-            cpRenderer.material.color = Color.black;
+            cpRenderer.material.color = Color.yellow;
         }
     }
 
@@ -32,7 +32,7 @@ public class CheckPointFunction : MonoBehaviour
 
             isChecked = true;
 
-            cpRenderer.material.color = Color.black;
+            cpRenderer.material.color = Color.yellow;
         }
     }
 
