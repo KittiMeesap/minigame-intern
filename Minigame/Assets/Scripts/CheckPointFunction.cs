@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class CheckPointFunction : MonoBehaviour
 {
-    public GameObject player;
     public Renderer cpRenderer;
-    public GameManager gameManager;
-
-    private Vector3 lastcheckedPosition;
-    private float lastcheckedTime;
+    private static Vector3 lastcheckedPosition;
+    private static float lastcheckedTime;
     private static bool hasCheckPoint = false;
-
     private bool isChecked;
 
     private
@@ -19,6 +15,9 @@ public class CheckPointFunction : MonoBehaviour
     {
         if (!hasCheckPoint)
         {
+            GameObject player = GameObject.FindWithTag("Player");
+            GameManager gameManager = FindFirstObjectByType<GameManager>();
+
             lastcheckedPosition = player.transform.position;
             lastcheckedTime = gameManager.GetRemainTime();
         }
@@ -26,10 +25,10 @@ public class CheckPointFunction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player && !isChecked)
+        if (other.CompareTag("Player") && !isChecked)
         {
             lastcheckedPosition = transform.position;
-            lastcheckedTime = gameManager.GetRemainTime();
+            lastcheckedTime = FindFirstObjectByType<GameManager>().GetRemainTime();
 
             hasCheckPoint = true;
             isChecked = true;
