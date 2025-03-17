@@ -17,8 +17,11 @@ public class CheckPointFunction : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lastcheckedPosition = player.transform.position;
-        lastcheckedTime = gameManager.GetRemainTime();
+        if (!hasCheckPoint)
+        {
+            lastcheckedPosition = player.transform.position;
+            lastcheckedTime = gameManager.GetRemainTime();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,9 +38,9 @@ public class CheckPointFunction : MonoBehaviour
         }
     }
 
-    public void ResetPlayerToCheckedPoint()
+    public void ResetPlayerToCheckedPoint(GameObject player, GameManager gameManager)
     {
-        if (isChecked)
+        if (hasCheckPoint)
         {
             player.transform.position = lastcheckedPosition;
             gameManager.ResetTime(lastcheckedTime);

@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     }
     public void ResetToCheckpoint()
     {
-        checkPointFunction.ResetPlayerToCheckedPoint();
+        checkPointFunction.ResetPlayerToCheckedPoint(GameObject.FindWithTag("Player"),this);
     }
 
     public float GetRemainTime()
