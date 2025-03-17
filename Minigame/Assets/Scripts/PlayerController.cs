@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,26 +26,22 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
-                playerDirection = Vector3.forward;
-                isMoving = true;
+                WhenPlayerMove(Vector3.forward);
             }
 
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
-                playerDirection = Vector3.down;
-                isMoving = true;
+                WhenPlayerMove(Vector3.down);
             }
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                playerDirection = Vector3.left;
-                isMoving = true;
+                WhenPlayerMove(Vector3.left);
             }
 
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                playerDirection = Vector3.right;
-                isMoving = true;
+                WhenPlayerMove(Vector3.right);
             }
         }
     }
@@ -64,6 +61,13 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             isMoving = false;
         }
+    }
+
+    private void WhenPlayerMove(Vector3 direction)
+    {
+        playerDirection = direction;
+        isMoving = true;
+        rb.linearVelocity = playerDirection * playerSpeed;
     }
 
 }
