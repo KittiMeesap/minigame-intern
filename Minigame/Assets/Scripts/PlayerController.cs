@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,6 +28,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = playerMove.normalized * playerSpeed;
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.name == "Wall" || col.gameObject.CompareTag("Wall"))
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
     }
 
 }
