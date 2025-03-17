@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isMoving = false;
     private bool isHitWall = false;
+    private bool isHitDoor = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Door"))
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Door") && !isHitDoor)
         {
             rb.linearVelocity = Vector3.zero;
             isMoving = false;
@@ -81,6 +82,11 @@ public class PlayerController : MonoBehaviour
         if (isHitWall) return;
         playerDirection = direction;
         isMoving = true;
+    }
+
+    public void UnlockDoor()
+    {
+        isHitDoor = true;
     }
 
 }
