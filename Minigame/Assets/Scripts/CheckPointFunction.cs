@@ -3,40 +3,35 @@ using UnityEngine;
 public class CheckPointFunction : MonoBehaviour
 {
     public GameObject player;
-    private bool isChecked;
-    private Vector3 checkedPosition;
-    private float checkedTime;
     public Renderer cpRenderer;
-
     public GameManager gameManager;
+
+    private Vector3 lastcheckedPosition;
+    private float lastcheckedTime;
+    private static bool hasCheckPoint = false;
+
+    private bool isChecked;
+
+    private
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        checkedPosition = transform.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isChecked)
-        {
-            cpRenderer.material.color = Color.yellow;
-        }
+        lastcheckedPosition = player.transform.position;
+        lastcheckedTime = gameManager.GetRemainTime();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player && !isChecked)
         {
-            checkedPosition = transform.position;
-            checkedTime = gameManager.GetRemainTime();
+            lastcheckedPosition = transform.position;
+            lastcheckedTime = gameManager.GetRemainTime();
 
+            hasCheckPoint = true;
             isChecked = true;
 
             cpRenderer.material.color = Color.yellow;
-
-            gameManager.ResetTime(checkedTime);
         }
     }
 
@@ -44,8 +39,8 @@ public class CheckPointFunction : MonoBehaviour
     {
         if (isChecked)
         {
-            player.transform.position = checkedPosition;
-            gameManager.ResetTime(checkedTime);
+            player.transform.position = lastcheckedPosition;
+            gameManager.ResetTime(lastcheckedTime);
         }
     }
 }

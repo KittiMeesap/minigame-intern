@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public GameObject losePanel;
 
+    public CheckPointFunction checkPointFunction;
+
     private bool gameEnd = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,6 +54,10 @@ public class GameManager : MonoBehaviour
     {
         timeRemaining = checkPointTime;
         currentTime = checkPointTime;
+    }
+    public void ResetToCheckpoint()
+    {
+        checkPointFunction.ResetPlayerToCheckedPoint();
     }
 
     public float GetRemainTime()
