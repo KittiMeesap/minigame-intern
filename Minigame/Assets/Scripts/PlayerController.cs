@@ -15,32 +15,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.linearVelocity = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        PlayerInput();
-    }
-
-    void FixedUpdate()
-    {
-        if (isMoving)
-        {
-            rb.linearVelocity = playerDirection * playerSpeed;
-        }
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.name == "Wall" || col.gameObject.CompareTag("Wall"))
-        {
-            rb.linearVelocity = Vector3.zero;
-            isMoving = false;
-        }
-    }
-
-    private void PlayerInput()
     {
         if (!isMoving)
         {
@@ -68,7 +47,23 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
             }
         }
+    }
 
+    void FixedUpdate()
+    {
+        if (isMoving)
+        {
+            rb.linearVelocity = playerDirection * playerSpeed;
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Wall" || col.gameObject.CompareTag("Wall"))
+        {
+            rb.linearVelocity = Vector3.zero;
+            isMoving = false;
+        }
     }
 
 }
