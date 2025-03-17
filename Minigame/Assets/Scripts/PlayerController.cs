@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving || isHitWall)
+        if (isMoving || !isHitWall)
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
-                WhenPlayerMove(Vector3.down);
+                WhenPlayerMove(Vector3.back);
             }
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -63,18 +63,16 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             isMoving = false;
             isHitWall = true;
-            StartCoroutine(ResetAfterHit());
+
+            StartCoroutine(AfterHitWall());
         }
     }
 
-    private IEnumerator ResetAfterHit()
+    private IEnumerator AfterHitWall()
     {
-        while (isHitWall)
-        {
-            yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
-            isHitWall = false;
-        }
+        isHitWall = false;
     }
 
 
@@ -83,7 +81,6 @@ public class PlayerController : MonoBehaviour
         if (isHitWall) return;
         playerDirection = direction;
         isMoving = true;
-        isHitWall = false;
     }
 
 }
