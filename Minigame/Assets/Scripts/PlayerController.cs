@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 playerDirection = Vector3.zero;
     public float playerSpeed = 10f;
+    public float moveDistance = 5f;
 
     private bool isMoving = false;
     private bool isHitWall = false;
@@ -80,6 +82,16 @@ public class PlayerController : MonoBehaviour
     private void WhenPlayerMove(Vector3 direction)
     {
         if (isHitWall) return;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, direction, out hit, moveDistance))
+        {
+            if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Door"))
+            {
+                isMoving = false;
+                return;
+            }
+        }
         playerDirection = direction;
         isMoving = true;
     }
