@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 10f;
 
     private bool isMoving = false;
+    private bool isHitWall = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving)
+        if (!isMoving || isHitWall)
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
@@ -60,14 +62,28 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = Vector3.zero;
             isMoving = false;
+            isHitWall = true;
+            StartCoroutine(ResetAfterHit());
         }
     }
 
+    private IEnumerator ResetAfterHit()
+    {
+        while (isHitWall)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            isHitWall = false;
+        }
+    }
+
+
     private void WhenPlayerMove(Vector3 direction)
     {
+        if (isHitWall) return;
         playerDirection = direction;
         isMoving = true;
-        rb.linearVelocity = playerDirection * playerSpeed;
+        isHitWall = false;
     }
 
 }
