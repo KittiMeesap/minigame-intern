@@ -54,6 +54,11 @@ public class GameManager : MonoBehaviour
         currentTime = checkPointTime;
     }
 
+    public float GetRemainTime()
+    {
+        return timeRemaining;
+    }
+
     public void PlayerWin()
     {
         if (!gameEnd)

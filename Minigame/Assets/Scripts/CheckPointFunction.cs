@@ -30,7 +30,7 @@ public class CheckPointFunction : MonoBehaviour
         if (other.gameObject == player && !isChecked)
         {
             checkedPosition = transform.position;
-            checkedTime = Time.time;
+            checkedTime = gameManager.GetRemainTime();
 
             isChecked = true;
 
@@ -45,6 +45,7 @@ public class CheckPointFunction : MonoBehaviour
         if (isChecked)
         {
             player.transform.position = checkedPosition;
+            gameManager.ResetTime(checkedTime);
         }
     }
 }
