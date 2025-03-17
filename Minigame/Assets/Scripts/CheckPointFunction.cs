@@ -22,4 +22,26 @@ public class CheckPointFunction : MonoBehaviour
             cpRenderer.material.color = Color.black;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == player && !isChecked)
+        {
+            checkedPosition = transform.position;
+            checkedTime = Time.time;
+
+            isChecked = true;
+
+            cpRenderer.material.color = Color.black;
+        }
+    }
+
+    private void ResetPlayerToCheckedPoint()
+    {
+        if (isChecked)
+        {
+            player.transform.position = checkedPosition;
+
+        }
+    }
 }

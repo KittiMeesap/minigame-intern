@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Wall" || col.gameObject.CompareTag("Wall"))
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Door"))
         {
             rb.linearVelocity = Vector3.zero;
             isMoving = false;

@@ -495,6 +495,7 @@ GameObject:
   - component: {fileID: 272320066}
   - component: {fileID: 272320065}
   - component: {fileID: 272320064}
+  - component: {fileID: 272320068}
   m_Layer: 0
   m_Name: CheckPoint
   m_TagString: Untagged
@@ -517,7 +518,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -591,6 +592,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &272320068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272320063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123e022c060a6d94c9911ea98fe317b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 437504174}
+  cpRenderer: {fileID: 272320065}
 --- !u!1001 &313836646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1155,7 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537bd2fa4a2d2ac41bd0ff799b62d328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 100
+  playerSpeed: 50
 --- !u!1001 &470265818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3527,6 +3542,14 @@ PrefabInstance:
     - target: {fileID: 1651515779809124700, guid: 1b7dc851691416447b3abd2e4b88b777, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 2383309808455541986, guid: 1b7dc851691416447b3abd2e4b88b777, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2383309808455541986, guid: 1b7dc851691416447b3abd2e4b88b777, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6585970332332040138, guid: 1b7dc851691416447b3abd2e4b88b777, type: 3}
       propertyPath: m_LocalPosition.x
