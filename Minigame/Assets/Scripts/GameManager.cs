@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
     }
 
-    public void PlayerWon()
+    public void PlayerWin()
     {
         if (!gameEnd)
         {
