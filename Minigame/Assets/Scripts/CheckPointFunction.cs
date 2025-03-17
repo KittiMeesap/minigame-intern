@@ -40,7 +40,7 @@ public class CheckPointFunction : MonoBehaviour
         }
     }
 
-    private void ResetPlayerToCheckedPoint()
+    public void ResetPlayerToCheckedPoint()
     {
         if (isChecked)
         {
