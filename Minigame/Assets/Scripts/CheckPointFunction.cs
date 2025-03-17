@@ -41,7 +41,7 @@ public class CheckPointFunction : MonoBehaviour
     {
         if (hasCheckPoint)
         {
-            player.transform.position = lastcheckedPosition;
+            player.GetComponent<PlayerController>().ResetPlayerPositon(lastcheckedPosition);
             gameManager.ResetTime(lastcheckedTime);
         }
     }

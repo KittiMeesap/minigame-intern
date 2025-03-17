@@ -1,8 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Cinemachine;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -89,6 +85,13 @@ public class PlayerController : MonoBehaviour
     public void UnlockDoor()
     {
         isHitDoor = true;
+    }
+
+    public void ResetPlayerPositon(Vector3 checkpointPositon)
+    {
+        transform.position = checkpointPositon;
+        rb.linearVelocity = Vector3.zero;
+        isMoving = false;
     }
 
 }
