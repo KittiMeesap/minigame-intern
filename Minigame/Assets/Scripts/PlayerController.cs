@@ -82,11 +82,6 @@ public class PlayerController : MonoBehaviour
         isMoving = true;
     }
 
-    public void UnlockDoor()
-    {
-        isHitDoor = true;
-    }
-
     public void ResetPlayerPositon(Vector3 checkpointPositon)
     {
         transform.position = checkpointPositon;

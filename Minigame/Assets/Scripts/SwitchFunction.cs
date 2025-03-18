@@ -19,8 +19,6 @@ public class SwitchFunction : MonoBehaviour
             if (door != null)
             {
                 Destroy(door);
-
-                other.GetComponent<PlayerController>().UnlockDoor();
             }
         }
     }
