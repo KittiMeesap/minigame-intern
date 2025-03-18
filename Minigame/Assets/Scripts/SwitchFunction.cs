@@ -19,6 +19,7 @@ public class SwitchFunction : MonoBehaviour
             if (door != null)
             {
                 Destroy(door);
+                door = null;
             }
         }
     }
