@@ -1604,7 +1604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1904692092}
   currentTime: 0
-  timeLimit: 120
+  timeLimit: 30
   winPanel: {fileID: 49463578}
   losePanel: {fileID: 919184601}
 --- !u!1001 &220430185
